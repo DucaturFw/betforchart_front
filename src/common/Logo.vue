@@ -1,7 +1,7 @@
 <template>
   <div>
-      DUCATUR
-      <!-- <img src="https://a.icons8.com/yuoUhPeZ/lv3ZLe/ducatur-logonormal.png" alt="DUCATUR"> -->
+      <!-- DUCATUR -->
+      <img src="https://a.icons8.com/yuoUhPeZ/lv3ZLe/ducatur-logonormal.png" alt="DUCATUR">
   </div>
 </template>
 
@@ -12,7 +12,7 @@ export default Vue.extend({
 })
 </script>
 <style scoped>
-div {
+/* div {
     color: red;
-}
+} */
 </style>
