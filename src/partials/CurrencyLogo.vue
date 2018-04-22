@@ -28,8 +28,11 @@ div {
 p {
     text-align: center;
     font-family: 'Nunito Sans', sans-serif;
+    font-size: 24px;
 }
 img {
+    width: 100px;
+    height: 100px;
 }
 
 .logo-small {
@@ -37,6 +40,7 @@ img {
 }
 .logo-small > img {
     width: 60px;
+    height: 60px;
     padding-left: 10px;
 }
 .logo-small > p {
