@@ -20,7 +20,7 @@ import Web3 from 'web3'
 declare const web3: any;
 let web3js: any;
 
-const CONTRACT_ADDR = '0xad2870197485a3f0ecbfdbd9de54ab90905df2de';
+const CONTRACT_ADDR = '0xCEf8cCE749ea5c04A943c04D172dC59f29873C4b';
 
 function getAddr() {
    if (web3.eth.defaultAccount && web3.eth.defaultAccount > 0) {
@@ -28,7 +28,7 @@ function getAddr() {
   }
 }
 
-function sendTX(amount: number) {
+function sendTX(amount: number, prediction: number) {
    if (typeof web3 !== 'undefined') {
       web3js = new Web3(web3.currentProvider);
    }
@@ -37,7 +37,8 @@ function sendTX(amount: number) {
       let tx = {
       from: getAddr(),
       to: CONTRACT_ADDR,
-      value: web3.toWei(amount)
+      value: web3.toWei(amount),
+      data: prediction
     }
 
       web3js.eth.sendTransaction(tx,
@@ -74,22 +75,22 @@ export default Vue.extend({
 
 			console.log(`create bet: ${JSON.stringify(form)}`)
 
-      sendTX(1);
-			fetch('/create_bet', {
-				method: 'POST',
-				body: JSON.stringify({
-					bet_info: {
-						for_amount: form.price1,
-						value: form.price2,
-						currency: SHORT[form.cur],
-						datetime: form.date,
-					},
-					user_info: { email: "test_user@mail.ru" }
-				}),
-				headers: new Headers({
-					'Content-Type': 'application/json'
-				})
-			}).then(() => { window.location.href = '/' })
+      sendTX(form.price2, form.price1);
+			// fetch('/create_bet', {
+			// 	method: 'POST',
+			// 	body: JSON.stringify({
+			// 		bet_info: {
+			// 			for_amount: form.price1,
+			// 			value: form.price2,
+			// 			currency: SHORT[form.cur],
+			// 			datetime: form.date,
+			// 		},
+			// 		user_info: { email: "test_user@mail.ru" }
+			// 	}),
+			// 	headers: new Headers({
+			// 		'Content-Type': 'application/json'
+			// 	})
+			// }).then(() => { window.location.href = '/' })
 			/*
 			{
 			bet_info: {for_amount: 1000, value: 50, currency: "ETH"},
@@ -99,7 +100,8 @@ export default Vue.extend({
 		},
 		listBetClick(bet: {})
 		{
-			console.log(`bet clicked: ${JSON.stringify(bet)}`)
+      console.log(`bet clicked: ${JSON.stringify(bet)}`)
+      // sendTX(1);
 		}
 	},
 	mounted: function ()

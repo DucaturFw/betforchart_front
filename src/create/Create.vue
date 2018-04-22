@@ -27,7 +27,7 @@
             </select>
             <p>Price prediction</p>
             <input class="form-input" type="text" name="price1" id="price1" v-model="form.price1">
-            <p>Your bet</p>
+            <p>Your bet (in ETH)</p>
             <input class="form-input" type="text" name="price2" id="price2" v-model="form.price2">
         </div>
         <button id="btnCreate" @click="create">Place bet</button>
