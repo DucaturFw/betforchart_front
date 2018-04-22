@@ -2,7 +2,7 @@
   <div id="app">
     <app-header/>
     <div v-if="loading">Loading...</div>
-    <bets-list v-if="!loading && !modeCreate" @make-bet="listBetClick"/>
+    <bets-list v-if="!loading && !modeCreate" :bets="bets" @make-bet="listBetClick"/>
     <create-bet v-if="!loading && modeCreate" :currency="create.currency" @create-bet="createBet"/>
     <app-footer/>
   </div>
@@ -57,7 +57,8 @@ export default Vue.extend({
 	data() {
 		return {
 			modeCreate: window.location.pathname == "/create",
-			loading: false,
+			loading: true,
+			bets: [],
 			create: {
 				currency: "Bitcoin",
 			}
@@ -106,11 +107,32 @@ export default Vue.extend({
 	},
 	mounted: function ()
 	{
+		const LONG = {
+			BTC: "Bitcoin",
+			LTC: "Litecoin",
+			XRP: "Ripple",
+			ETH: "Ethereum",
+		}
 		console.log()
 		let _this = this
-		setTimeout(() => {
+		fetch('/get_bets').then(res =>
+		{
+			type BetResponse = {
+				bet_info: { for_amount: number, value: number, currency: "BTC" | "LTC" | "XRP" | "ETH", datetime: number },
+				user_info: { email: string },
+				timestamp: number,
+			}
+			let bets = res.body
+			
+			_this.bets = Array.prototype.slice.call(bets).map((x: BetResponse) =>
+			{
+				return { cur: LONG[x.bet_info.currency], price: x.bet_info.for_amount, date: x.bet_info.datetime }
+			})
+
+			console.log(`bets: ${_this.bets}`)
+
 			_this.loading = false
-		}, 1000)
+		})
 	},
 	components: {
 		AppHeader,

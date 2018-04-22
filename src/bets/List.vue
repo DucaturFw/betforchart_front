@@ -23,18 +23,10 @@ export default Vue.extend({
     data()
     {
         return {
-            currencies: ["Bitcoin", "Litecoin", "Ripple", "Ethereum"],
-            bets: [
-                { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
-                { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
-                { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
-                { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
-                { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
-                { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
-                { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
-            ]
+            currencies: ["Bitcoin", "Litecoin", "Ripple", "Ethereum"]
         }
     },
+    props: ["bets"],
     methods: {
         makeBet(bet: any)
         {
@@ -56,7 +48,7 @@ export default Vue.extend({
 }
 div.main-list {
   width: 770px;
-  height: 1054px;
+  /* height: 1054px; */
   font-family: "Nunito Sans";
   font-size: 17px;
   font-style: normal;
