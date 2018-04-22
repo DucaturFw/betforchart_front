@@ -11,6 +11,7 @@
         "moduleResolution": "node"
     },
     "include": [
-        "src"
+        "src",
+        "./node_modules/types-bn/index.d.ts"
     ]
 }

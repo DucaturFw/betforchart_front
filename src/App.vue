@@ -15,6 +15,42 @@ import AppFooter from './common/Footer.vue'
 import BetsList from './bets/List.vue'
 import CreateBet from './create/Create.vue'
 
+import Web3 from 'web3'
+
+declare const web3: any;
+let web3js: any;
+
+const CONTRACT_ADDR = '0xad2870197485a3f0ecbfdbd9de54ab90905df2de';
+
+function getAddr() {
+   if (web3.eth.defaultAccount && web3.eth.defaultAccount > 0) {
+      return web3.eth.defaultAccount;
+  }
+}
+
+function sendTX(amount: number) {
+   if (typeof web3 !== 'undefined') {
+      web3js = new Web3(web3.currentProvider);
+   }
+
+   if (getAddr()) {
+      let tx = {
+      from: getAddr(),
+      to: CONTRACT_ADDR,
+      value: web3.toWei(amount)
+    }
+
+      web3js.eth.sendTransaction(tx,
+        function (err: any, transactionHash: string) {
+          if (!err) {
+            console.log('join done', transactionHash);
+            // Send TXhash to back
+          }
+        }
+      );
+   }
+}
+
 export default Vue.extend({
   data() {
     return {
@@ -29,6 +65,7 @@ export default Vue.extend({
     createBet(form: {cur: string, cond: string, price1: number, price2: number, date: number})
     {
       console.log(`create bet: ${JSON.stringify(form)}`)
+      sendTX(1);
     },
     listBetClick(bet: {})
     {

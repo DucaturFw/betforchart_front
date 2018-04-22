@@ -21,6 +21,7 @@ export default Vue.extend({
     makeBet()
     {
       this.$emit('make-bet', this.bet)
+      console.log('make a bet');
     }
   },
   props: ["bet", "complete"],
