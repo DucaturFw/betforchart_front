@@ -1,13 +1,7 @@
 <template>
   <div class="main-list">
       <h1>Контракты на спор</h1>
-      <ul>
-          <li>bitcoin</li>
-          <li>litecoin</li>
-          <li>ripple</li>
-          <li>ethereum</li>
-          <li>...</li>
-      </ul>
+      <cur-logo class="logo-small" v-for="cur in currencies" :key="cur" :currency="cur" :label="true"></cur-logo>
       <div class="sort">
           <p>Упорядочить</p>
           <select name="" id=""></select>
@@ -22,11 +16,13 @@
 
 import Vue from 'vue'
 import Bet from './Bet.vue'
+import CurLogo from '../partials/CurrencyLogo.vue'
 
 export default Vue.extend({
     data()
     {
         return {
+            currencies: ["Bitcoin","Litecoin","Ripple","Ethereum"],
             bets: [
                 { cur: "Bitcoin", price: 10000, date: 1274128974 },
                 { cur: "Bitcoin", price: 10000, date: 1274128974 },
@@ -40,6 +36,7 @@ export default Vue.extend({
     },
     components: {
         Bet,
+        CurLogo,
     }
 })
 
