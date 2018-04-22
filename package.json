@@ -7,10 +7,13 @@
     "@poi/plugin-typescript": "^10.1.2",
     "poi": "^10.1.2",
     "ts-node": "^6.0.0",
+    "types-bn": "^0.0.1",
     "typescript": "^2.8.3"
   },
   "dependencies": {
+    "@types/underscore": "^1.8.8",
     "vue": "^2.5.16",
-    "vuejs-datepicker": "^0.9.29"
+    "vuejs-datepicker": "^0.9.29",
+    "web3": "^1.0.0-beta.34"
   }
 }
