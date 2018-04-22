@@ -58,8 +58,8 @@ div.bet-entry {
   color: #211f51;
   box-shadow: 0px 1px 3px rgba(32,32,38,0.12);
   padding: 20px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 span.text-main {
   /* top: 25px; */
