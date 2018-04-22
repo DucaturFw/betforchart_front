@@ -52,40 +52,70 @@ function sendTX(amount: number) {
 }
 
 export default Vue.extend({
-  data() {
-    return {
-      modeCreate: window.location.pathname == "/create",
-      loading: false,
-      create: {
-        currency: "Bitcoin",
-      }
-    }
-  },
-  methods: {
-    createBet(form: {cur: string, cond: string, price1: number, price2: number, date: number})
-    {
-      console.log(`create bet: ${JSON.stringify(form)}`)
+
+	data() {
+		return {
+			modeCreate: window.location.pathname == "/create",
+			loading: false,
+			create: {
+				currency: "Bitcoin",
+			}
+		}
+	},
+	methods: {
+		createBet(form: {cur: "Ethereum" | "Bitcoin" | "Litecoin" | "Ripple", cond: string, price1: number, price2: number, date: number})
+		{
+			const SHORT = {
+				Ethereum: "ETH",
+				Bitcoin: "BTC",
+				Litecoin: "LTC",
+				Ripple: "XRP",
+			}
+
+			console.log(`create bet: ${JSON.stringify(form)}`)
+
       sendTX(1);
-    },
-    listBetClick(bet: {})
-    {
-      console.log(`bet clicked: ${JSON.stringify(bet)}`)
-    }
-  },
-  mounted: function ()
-  {
-    console.log()
-    let _this = this
-    setTimeout(() => {
-      _this.loading = false
-    }, 1000)
-  },
-  components: {
-    AppHeader,
-    AppFooter,
-    BetsList,
-    CreateBet,
-  }
+			fetch('/create_bet', {
+				method: 'POST',
+				body: JSON.stringify({
+					bet_info: {
+						for_amount: form.price1,
+						value: form.price2,
+						currency: SHORT[form.cur],
+						datetime: form.date,
+					},
+					user_info: { email: "test_user@mail.ru" }
+				}),
+				headers: new Headers({
+					'Content-Type': 'application/json'
+				})
+			}).then(() => { window.location.href = '/' })
+			/*
+			{
+			bet_info: {for_amount: 1000, value: 50, currency: "ETH"},
+			user_info: {email: "unique id"}
+			}
+			*/
+		},
+		listBetClick(bet: {})
+		{
+			console.log(`bet clicked: ${JSON.stringify(bet)}`)
+		}
+	},
+	mounted: function ()
+	{
+		console.log()
+		let _this = this
+		setTimeout(() => {
+			_this.loading = false
+		}, 1000)
+	},
+	components: {
+		AppHeader,
+		AppFooter,
+		BetsList,
+		CreateBet,
+	}
 })
 </script>
 

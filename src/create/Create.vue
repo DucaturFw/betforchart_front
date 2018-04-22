@@ -22,12 +22,12 @@
         </div>
         <div class="form-right">
             <p>Condition</p>
-            <select class="form-input" name="condition" id="cond" v-model="form.cond">
-                <option value="">Price is between two values:</option>
+            <select class="form-input" name="condition" id="cond" v-model="form.cond" disabled>
+                <option value="">Price will be higher than</option>
             </select>
-            <p>Price prediction 1</p>
+            <p>Price prediction</p>
             <input class="form-input" type="text" name="price1" id="price1" v-model="form.price1">
-            <p>Price prediction 2</p>
+            <p>Your bet</p>
             <input class="form-input" type="text" name="price2" id="price2" v-model="form.price2">
         </div>
         <button id="btnCreate" @click="create">Place bet</button>
