@@ -48,7 +48,7 @@ export default Vue.extend({
 }
 div.main-list {
   width: 770px;
-  height: 1054px;
+  /* height: 1054px; */
   font-family: "Nunito Sans";
   font-size: 17px;
   font-style: normal;
