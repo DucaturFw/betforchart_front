@@ -1,6 +1,7 @@
 <template>
   <div class="main-list">
       <h1>Betting Contracts</h1>
+      <a href="/create" class="invis"><button class="more">Create new bet</button></a>
       <cur-logo class="logo-small" v-for="cur in currencies" :key="cur" :currency="cur" :label="true"></cur-logo>
       <div class="sort">
           <p>Sort by:</p>
@@ -93,6 +94,27 @@ div.sort > select {
     padding: 8px;
     border-radius: 4px;
     width: 250px;
+}
+
+
+button.more {
+  /* width: 20%; */
+  border: none;
+  border-radius: 25px;
+  width: 248px;
+  height: 55px;
+  background: #ff1052;
+  font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+  color: white;
+  font-size: 18px;
+  /* font-weight: 700; */
+  margin: auto;
+  margin-bottom: 40px;
+  display: block;
+  cursor: pointer;
+}
+a.invis {
+    text-decoration: none;
 }
 
 </style>

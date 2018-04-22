@@ -1,7 +1,7 @@
 <template>
   <div class="header-container">
   <div id="header">
-      <logo class="logo"/>
+      <a href="/" class="invis"><logo class="logo"/></a>
       <div class="menu-main">
         <span class="link" v-for="menuLink in menuLinks" :key="menuLink.name"><a :href="menuLink.href">{{ menuLink.name }}</a></span>
         <button class="small-white-button">Whitepaper</button>

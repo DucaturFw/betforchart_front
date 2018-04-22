@@ -17,7 +17,9 @@
         <div class="form-logo">
             <cur-logo :currency="selectedCur" :label="false"></cur-logo>
         </div>
-        <div class="form-left">datepicker</div>
+        <div class="form-left">
+            <datepicker class="picker" :inline="true" v-model="form._date" :disabled="{ to: today() }"></datepicker>
+        </div>
         <div class="form-right">
             <p>Condition</p>
             <select class="form-input" name="condition" id="cond" v-model="form.cond">
@@ -37,6 +39,25 @@
 
 import Vue from 'vue'
 import CurLogo from '../partials/CurrencyLogo.vue'
+import * as Datepicker from 'vuejs-datepicker'
+
+
+function yesterday()
+{
+    let d = new Date()
+    d.setTime(d.getTime() - 86400 * 1000)
+    return d
+}
+function today()
+{
+    return new Date()
+}
+function tomorrow()
+{
+    let d = new Date()
+    d.setTime(d.getTime() + 86400 * 1000)
+    return d
+}
 
 export default Vue.extend({
     data()
@@ -54,13 +75,15 @@ export default Vue.extend({
                 price1: 0,
                 price2: 0,
                 date: 0,
+                _date: tomorrow(),
             }
         }
     },
     methods: {
+        today, tomorrow, yesterday,
         create()
         {
-            this.$emit('create-bet', { cur: this.selectedCur, ...this.form })
+            this.$emit('create-bet', { cur: this.selectedCur, ...this.form, date: this.form._date.getTime() / 1000 })
         },
         selectCur(cur: { name: string, img: string })
         {
@@ -71,6 +94,7 @@ export default Vue.extend({
     props: ["currency"],
     components: {
         CurLogo,
+        Datepicker,
     }
 })
 
@@ -148,6 +172,7 @@ div.form-logo {
     width: 100px;
     margin: auto;
 }
+
 div.form-left {
     width: 450px;
     height: 350px;
@@ -157,6 +182,11 @@ div.form-right {
     width: 450px;
     height: 350px;
     float: right;
+}
+
+.picker {
+    margin-left: 70px;
+    margin-top: 30px;
 }
 
 .form-input {
@@ -182,6 +212,19 @@ button#btnCreate {
     /* clear: both; */
     display: block;
     margin: auto;
+
+    
+  /* width: 20%; */
+  border: none;
+  border-radius: 25px;
+  width: 248px;
+  height: 55px;
+  background: #ff1052;
+  font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+  color: #fff;
+  font-size: 18px;
+  /* font-weight: 700; */
+  cursor: pointer;
 }
 
 </style>
