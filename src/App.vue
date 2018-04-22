@@ -3,7 +3,7 @@
     <app-header/>
     <div v-if="loading">Loading...</div>
     <bets-list v-if="!loading && !modeCreate"/>
-    <create-bet v-if="!loading && modeCreate" :currency="create.currency"/>
+    <create-bet v-if="!loading && modeCreate" :currency="create.currency" @create-bet="createBet"/>
     <app-footer/>
   </div>
 </template>
@@ -23,6 +23,12 @@ export default Vue.extend({
       create: {
         currency: "Bitcoin",
       }
+    }
+  },
+  methods: {
+    createBet(form: {cur: string, cond: string, price1: number, price2: number, date: number})
+    {
+      console.log(`create bet: ${JSON.stringify(form)}`)
     }
   },
   mounted: function ()
