@@ -66,7 +66,7 @@ div#header {
 
 div.header-container {
   width: 100%;
-  height: 150px;
+  height: 190px;
   background: url(https://u.imageresize.org/808e0c8e-7320-4d53-adb4-73ff7f72c0b3.png) 0px -8px / calc(100% + 50px),
     url(https://a.icons8.com/WiimnclY/fxrxJO/rectanglenormal.svg) -10px -10px / calc(100% + 50px) no-repeat;
 }

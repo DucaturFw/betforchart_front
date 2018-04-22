@@ -2,7 +2,7 @@
   <div id="app">
     <app-header/>
     <div v-if="loading">Loading...</div>
-    <bets-list v-if="!loading && !modeCreate"/>
+    <bets-list v-if="!loading && !modeCreate" @make-bet="listBetClick"/>
     <create-bet v-if="!loading && modeCreate" :currency="create.currency" @create-bet="createBet"/>
     <app-footer/>
   </div>
@@ -29,6 +29,10 @@ export default Vue.extend({
     createBet(form: {cur: string, cond: string, price1: number, price2: number, date: number})
     {
       console.log(`create bet: ${JSON.stringify(form)}`)
+    },
+    listBetClick(bet: {})
+    {
+      console.log(`bet clicked: ${JSON.stringify(bet)}`)
     }
   },
   mounted: function ()

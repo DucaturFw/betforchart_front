@@ -1,7 +1,7 @@
 <template>
   <div class="bet-entry">
     <span class="text-main">{{ bet.cur }} at ${{ bet.price }} on {{ bet.date }}</span>
-    <input v-if="!complete" class="btn" type="button" value="Bet">
+    <input v-if="!complete" class="btn" type="button" value="Bet" @click="makeBet">
     <img class="check" v-if="complete" src="https://a.icons8.com/bbpXpmkk/0iOHYM/btnnormal.png" alt="V">
   </div>
 </template>
@@ -15,6 +15,12 @@ export default Vue.extend({
     return {
       menuLinks: [
       ],
+    }
+  },
+  methods: {
+    makeBet()
+    {
+      this.$emit('make-bet', this.bet)
     }
   },
   props: ["bet", "complete"],

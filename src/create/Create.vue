@@ -9,19 +9,25 @@
                 <cur-logo class="cur-logo" :currency="cur.name" :label="true"></cur-logo>
             </div>
         </div>
-        <button>More currencies</button>
+        <button class="more">More currencies</button>
     </div>
 
     <div id="createForm">
-        <h1>Your prediction for {{ selectedCur }}</h1>
-        <div>logo</div>
-        <div>datepicker</div>
-        <span>Condition</span>
-        <select name="condition" id="cond" v-model="form.cond"></select>
-        <span>Price prediction 1</span>
-        <input type="text" name="price1" id="price1" v-model="form.price1">
-        <span>Price prediction 2</span>
-        <input type="text" name="price2" id="price2" v-model="form.price2">
+        <h1 style="color: black; margin-top: 100px;">Your prediction for {{ selectedCur }}</h1>
+        <div class="form-logo">
+            <cur-logo :currency="selectedCur" :label="false"></cur-logo>
+        </div>
+        <div class="form-left">datepicker</div>
+        <div class="form-right">
+            <p>Condition</p>
+            <select class="form-input" name="condition" id="cond" v-model="form.cond">
+                <option value="">Price is between two values:</option>
+            </select>
+            <p>Price prediction 1</p>
+            <input class="form-input" type="text" name="price1" id="price1" v-model="form.price1">
+            <p>Price prediction 2</p>
+            <input class="form-input" type="text" name="price2" id="price2" v-model="form.price2">
+        </div>
         <button id="btnCreate" @click="create">Place bet</button>
     </div>
   </div>
@@ -37,10 +43,10 @@ export default Vue.extend({
     {
         return {
             currencies: [
-                { name: "Bitcoin", img: "" },
-                { name: "Litecoin", img: "" },
-                { name: "Ripple", img: "" },
-                { name: "Ethereum", img: "" },
+                { name: "Bitcoin" },
+                { name: "Litecoin" },
+                { name: "Ripple" },
+                { name: "Ethereum" },
             ],
             selectedCur: this.currency,
             form: {
@@ -99,6 +105,22 @@ h3 {
     text-align: center;
 }
 
+button.more {
+  /* width: 20%; */
+  border: none;
+  border-radius: 25px;
+  width: 248px;
+  height: 55px;
+  background: #fff;
+  font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+  color: black;
+  font-size: 18px;
+  /* font-weight: 700; */
+  margin: auto;
+  display: block;
+  cursor: pointer;
+}
+
 div.cur-select {
     display: inline-block;
     background: rgba(32,32,38,0.08);
@@ -112,6 +134,53 @@ div.cur-select.selected {
     background: white;
 }
 div.cur-select > .cur-logo {
+    margin: auto;
+}
+
+div#createForm {
+    width: 900px;
+    margin: auto;
+    font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    /* height: 400px; */
+}
+div.form-logo {
+    width: 100px;
+    margin: auto;
+}
+div.form-left {
+    width: 450px;
+    height: 350px;
+    float: left;
+}
+div.form-right {
+    width: 450px;
+    height: 350px;
+    float: right;
+}
+
+.form-input {
+    padding: 10px;
+    border-radius: 4px;
+    width: 400px;
+    font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+}
+select.form-input {
+    width: 425px;
+}
+
+div#createForm::after {
+    clear: both;
+    /* margin-bottom: 100px; */
+    /* display: table; */
+}
+div.main-create {
+    margin-bottom: 100px;
+}
+button#btnCreate {
+    /* clear: both; */
+    display: block;
     margin: auto;
 }
 

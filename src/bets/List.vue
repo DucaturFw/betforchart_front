@@ -7,7 +7,7 @@
           <select name="" id="" disabled><option value="">Date added</option></select>
       </div>
       <div id="betsList">
-          <bet class="bet-entry" v-for="(bet, key, index) in bets" :key="index" :bet="bet" :complete="key % 2"></bet>
+          <bet class="bet-entry" v-for="(bet, key, index) in bets" :key="index" :bet="bet" :complete="key % 2" @make-bet="makeBet"></bet>
       </div>
   </div>
 </template>
@@ -32,6 +32,12 @@ export default Vue.extend({
                 { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
                 { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
             ]
+        }
+    },
+    methods: {
+        makeBet(bet: any)
+        {
+            this.$emit('make-bet', bet)
         }
     },
     components: {
