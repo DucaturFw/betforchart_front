@@ -47,3 +47,16 @@ export default Vue.extend({
   }
 })
 </script>
+
+<style>
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,700|Montserrat:400,700");
+html {
+  width: 100%;
+  background: url(https://a.icons8.com/yuoUhPeZ/ZM8xcN/page-1normal.png) repeat-y -400px;
+  background-size: calc(100% + 800px);
+  background-color: #a2c4eb;
+}
+html, body {
+  margin: 0;
+}
+</style>

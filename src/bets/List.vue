@@ -48,13 +48,30 @@ export default Vue.extend({
 <style scoped>
 
 .bet-entry {
-    left: 150px;
-    width: 400px;
+    margin-bottom: 20px;
 }
 div.main-list {
-    width: 80%;
-    left: auto;
-    right: auto;
+  width: 770px;
+  height: 1054px;
+  font-family: "Nunito Sans";
+  font-size: 17px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  text-align: left;
+  margin: auto;
+}
+h1 {
+  /* width: 750px; */
+  height: 52px;
+  /* color: #fff; */
+  color: #211F51;
+  font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 48px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 700;
+  text-align: center;
 }
 
 </style>

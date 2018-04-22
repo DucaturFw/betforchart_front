@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="logo-div">
       <!-- DUCATUR -->
       <img src="https://a.icons8.com/yuoUhPeZ/lv3ZLe/ducatur-logonormal.png" alt="DUCATUR">
   </div>
@@ -12,7 +12,11 @@ export default Vue.extend({
 })
 </script>
 <style scoped>
+
 /* div {
     color: red;
 } */
+.logo-div {
+    display: inline;
+}
 </style>
