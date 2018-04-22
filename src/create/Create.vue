@@ -212,6 +212,19 @@ button#btnCreate {
     /* clear: both; */
     display: block;
     margin: auto;
+
+    
+  /* width: 20%; */
+  border: none;
+  border-radius: 25px;
+  width: 248px;
+  height: 55px;
+  background: #ff1052;
+  font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+  color: #fff;
+  font-size: 18px;
+  /* font-weight: 700; */
+  cursor: pointer;
 }
 
 </style>
