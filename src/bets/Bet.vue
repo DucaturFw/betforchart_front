@@ -1,7 +1,7 @@
 <template>
   <div class="bet-entry">
-    <span class="text-main">{{ bet.cur }} по ${{ bet.price }} к {{ bet.date }}</span>
-    <input v-if="complete" class="btn" type="button" value="Участвовать">
+    <span class="text-main">{{ bet.cur }} at ${{ bet.price }} on {{ bet.date }}</span>
+    <input v-if="complete" class="btn" type="button" value="Bet">
   </div>
 </template>
 

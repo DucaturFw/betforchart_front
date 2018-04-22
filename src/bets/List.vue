@@ -1,10 +1,10 @@
 <template>
   <div class="main-list">
-      <h1>Контракты на спор</h1>
+      <h1>Betting Contracts</h1>
       <cur-logo class="logo-small" v-for="cur in currencies" :key="cur" :currency="cur" :label="true"></cur-logo>
       <div class="sort">
-          <p>Упорядочить</p>
-          <select name="" id="" disabled><option value="">По дате добавления</option></select>
+          <p>Sort by:</p>
+          <select name="" id="" disabled><option value="">Date added</option></select>
       </div>
       <div id="betsList">
           <bet class="bet-entry" v-for="(bet, key, index) in bets" :key="index" :bet="bet" :complete="key % 2"></bet>
@@ -22,15 +22,15 @@ export default Vue.extend({
     data()
     {
         return {
-            currencies: ["Bitcoin","Litecoin","Ripple","Ethereum"],
+            currencies: ["Bitcoin", "Litecoin", "Ripple", "Ethereum"],
             bets: [
-                { cur: "Bitcoin", price: 10000, date: 1274128974 },
-                { cur: "Bitcoin", price: 10000, date: 1274128974 },
-                { cur: "Bitcoin", price: 10000, date: 1274128974 },
-                { cur: "Bitcoin", price: 10000, date: 1274128974 },
-                { cur: "Bitcoin", price: 10000, date: 1274128974 },
-                { cur: "Bitcoin", price: 10000, date: 1274128974 },
-                { cur: "Bitcoin", price: 10000, date: 1274128974 },
+                { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
+                { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
+                { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
+                { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
+                { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
+                { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
+                { cur: "Bitcoin", price: Math.floor(Math.random() * 50) * 1000, date: 1274128974 },
             ]
         }
     },
