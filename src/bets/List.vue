@@ -4,7 +4,7 @@
       <cur-logo class="logo-small" v-for="cur in currencies" :key="cur" :currency="cur" :label="true"></cur-logo>
       <div class="sort">
           <p>Упорядочить</p>
-          <select name="" id=""></select>
+          <select name="" id="" disabled><option value="">По дате добавления</option></select>
       </div>
       <div id="betsList">
           <bet class="bet-entry" v-for="(bet, key, index) in bets" :key="index" :bet="bet" :complete="key % 2"></bet>
@@ -69,6 +69,24 @@ h1 {
   font-stretch: normal;
   font-weight: 700;
   text-align: center;
+}
+
+div.sort {
+    /* display: inline-block; */
+    float: right;
+    /* bottom: 0; */
+    margin-top: 15px;
+}
+div.sort > p {
+    font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    /* text-align: right; */
+}
+div.sort > select {
+    padding: 8px;
+    border-radius: 4px;
+    width: 250px;
 }
 
 </style>
