@@ -22,7 +22,49 @@ import Web3 from 'web3'
 declare const web3: any;
 let web3js: any;
 
-const CONTRACT_ADDR = '0xCEf8cCE749ea5c04A943c04D172dC59f29873C4b';
+const CONTRACT_ADDR = '0xb53d6e3c8a866126affc871be2dbf586815b3c6a';
+const abi = [
+ {
+  "constant": true,
+  "inputs": [],
+  "name": "owner",
+  "outputs": [
+   {
+    "name": "",
+    "type": "address"
+   }
+  ],
+  "payable": false,
+  "stateMutability": "view",
+  "type": "function"
+ },
+ {
+  "constant": false,
+  "inputs": [
+   {
+    "name": "_minanswer",
+    "type": "uint256"
+   },
+   {
+    "name": "_predictrate",
+    "type": "uint256"
+   }
+  ],
+  "name": "createBet",
+  "outputs": [],
+  "payable": true,
+  "stateMutability": "payable",
+  "type": "function"
+ },
+ {
+  "inputs": [],
+  "payable": false,
+  "stateMutability": "nonpayable",
+  "type": "constructor"
+ }
+];
+
+const contractInstance = web3.eth.contract(abi).at(CONTRACT_ADDR);
 
 function getAddr() {
    if (web3.eth.defaultAccount && web3.eth.defaultAccount > 0) {
@@ -38,19 +80,22 @@ function sendTX(amount: number, prediction: number) {
    if (getAddr()) {
       let tx = {
       from: getAddr(),
-      to: CONTRACT_ADDR,
+      // to: CONTRACT_ADDR,
       value: web3.toWei(amount),
-      data: prediction
+      // data: contractInstance.createBet.getData(0, prediction)
     }
 
-      web3js.eth.sendTransaction(tx,
-        function (err: any, transactionHash: string) {
-          if (!err) {
-            console.log('join done', transactionHash);
-            // Send TXhash to back
-          }
-        }
-      );
+    contractInstance.createBet.sendTransaction(0, prediction, tx);
+
+      // web3js.eth.sendTransaction(tx,
+      //   function (err: any, transactionHash: string) {
+      //     if (!err) {
+      //       console.log('join done', transactionHash);
+      //       // Send TXhash to back
+      //     }
+      //   }
+      // );
+
    }
 }
 
