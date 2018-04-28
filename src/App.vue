@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <app-header/>
-    <div v-if="loading">Loading...</div>
-    <bets-list v-if="!loading && !modeCreate" :bets="bets" @make-bet="listBetClick"/>
-    <create-bet v-if="!loading && modeCreate" :currency="create.currency" @create-bet="createBet"/>
+	<div class="main">
+		<div v-if="loading">Loading...</div>
+		<bets-list v-if="!loading && !modeCreate" :bets="bets" @make-bet="listBetClick"/>
+		<create-bet v-if="!loading && modeCreate" :currency="create.currency" @create-bet="createBet"/>
+	</div>
     <app-footer/>
   </div>
 </template>
@@ -122,7 +124,9 @@ export default Vue.extend({
 				user_info: { email: string },
 				timestamp: number,
 			}
-			let bets = res.body
+			// let bets = res.body
+
+			let bets = [1,2,3,45,5,6,7,89,0].map(x => ({ bet_info: {currency: "ETH", for_amount: x, datetime: x + 150000 }})) as any[]
 			
 			_this.bets = Array.prototype.slice.call(bets).map((x: BetResponse) =>
 			{
@@ -153,5 +157,10 @@ html {
 }
 html, body {
   margin: 0;
+  padding: 0;
+  height: 100%;
+}
+div#app {
+	min-height: 100%;
 }
 </style>
